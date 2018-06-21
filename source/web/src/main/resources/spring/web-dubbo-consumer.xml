@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- Application name -->
+	<dubbo:application name="web-consumer" />
+
+	<!-- registry address, used for service to register itself -->
+	<dubbo:registry protocol="zookeeper" address="${zookeeper.address}" />
+
+	<!--user service -->
+	<dubbo:reference interface="com.mattdamon.user.service.UserService"
+		id="userServiceImpl" timeout="3000" />
+
+</beans>
